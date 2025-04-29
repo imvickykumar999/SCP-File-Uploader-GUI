@@ -3,6 +3,31 @@ A modern, dark-themed SCP File Uploader GUI built with Python Tkinter and Parami
 
 ---
 
+**Complete Linux-compatible, dark-themed SCP File Uploader GUI**, including:
+
+✅ Dark theme  
+✅ Custom black-and-white popup (replacing `messagebox`)  
+✅ Pre-filled username and server IP  
+✅ Folder selector with icons  
+✅ Fully self-contained GUI
+
+---
+
+## ✅ How to Run:
+
+1. Save this as `main.py`
+2. Ensure you have:
+   ```bash
+   pip install paramiko
+   sudo apt install sshpass
+   ```
+3. Run it:
+   ```bash
+   python3 main.py
+   ```
+
+---
+
 ## 🚀 MIT License
 
 When we say **"don't blame me"** under an **MIT License**,  

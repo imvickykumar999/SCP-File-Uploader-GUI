@@ -1,5 +1,7 @@
 # `SCP File Uploader GUI`
 
+      scp -i "C:\Users\surface\Downloads\samadmin.pem" "C:\Users\surface\Documents\GitHub\VlogForge\blog\static\assets\img\get-apk-from-github.png" samadmin@34.139.46.232:~/blogforge/blogproject/blog/static/assets/img/
+
 ![image](https://github.com/user-attachments/assets/a6208261-32fb-43dd-9e84-976bfe1ef6e1)
 
 A modern, dark-themed SCP File Uploader GUI built with Python Tkinter and Paramiko. Transfer files easily to remote Linux servers with a stylish, easy-to-use interface.

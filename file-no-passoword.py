@@ -43,13 +43,13 @@ def custom_popup(title, message, success=True):
 
 # ------------------- File Select -------------------
 def select_file():
-    filepath = filedialog.askopenfilename()
+    filepath = filedialog.askopenfilename(title="Select File", filetypes=[("All Files", "*.*")])
     if filepath:
         file_path_var.set(filepath)
 
 # ------------------- PEM Key Select -------------------
 def select_pem_key():
-    filepath = filedialog.askopenfilename(filetypes=[("PEM Key", "*.pem")])
+    filepath = filedialog.askopenfilename(filetypes=[("All Files", "*.*")])
     if filepath:
         pem_key_var.set(filepath)
 
@@ -92,8 +92,8 @@ root.configure(bg="#1e1e1e")
 
 # Form variables
 file_path_var = tk.StringVar()
-server_ip_var = tk.StringVar(value="34.139.46.232")
-username_var = tk.StringVar(value="samadmin")
+server_ip_var = tk.StringVar(value="64.227.134.57")  # Default IP address
+username_var = tk.StringVar(value="root")  # Default username for root access
 pem_key_var = tk.StringVar()
 remote_path_var = tk.StringVar()
 

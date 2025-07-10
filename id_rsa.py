@@ -122,6 +122,14 @@ def browse_remote_folder(remote_path="/"):
         custom_popup("Error", "Please fill in the server connection details first.", success=False)
         return
 
+    # Create the folder window dynamically when browsing (only once)
+    if 'folder_window' not in globals():
+        global folder_window
+        folder_window = tk.Toplevel(root)
+        folder_window.title("Select Remote Folder")
+        folder_window.geometry("400x300")
+        folder_window.configure(bg="#1e1e1e")
+
     try:
         key = paramiko.RSAKey.from_private_key_file(pem_path)
 
@@ -136,10 +144,10 @@ def browse_remote_folder(remote_path="/"):
         for widget in folder_window.winfo_children():
             widget.destroy()
 
-        tk.Label(folder_window, text=f"Select Remote Folder\n({remote_path})", font=("Segoe UI", 12, "bold")).pack(pady=10)
+        tk.Label(folder_window, text=f"Select Remote Folder\n({remote_path})", font=("Segoe UI", 12, "bold"), fg="white", bg="#1e1e1e").pack(pady=10)
 
         if not remote_items:
-            tk.Label(folder_window, text="No folders found", font=("Segoe UI", 12)).pack(pady=10)
+            tk.Label(folder_window, text="No folders found", font=("Segoe UI", 12), fg="white", bg="#1e1e1e").pack(pady=10)
 
         for item in remote_items:
             if S_ISDIR(item.st_mode):  # Only show directories
@@ -205,17 +213,8 @@ tk.Label(root, text="📁 Remote Folder Path:", bg="#1e1e1e", fg="white", font=l
 tk.Entry(root, textvariable=remote_path_var, width=50, **entry_style).grid(row=4, column=1, padx=10, pady=10)
 tk.Button(root, text="Browse", command=lambda: browse_remote_folder(remote_path_var.get() or "/"), bg="#0078d4", fg="white").grid(row=4, column=2, padx=10, pady=10)
 
-# Initialize folder window for remote navigation
-folder_window = tk.Toplevel(root)
-folder_window.title("Select Remote Folder")
-folder_window.geometry("400x300")
-folder_window.configure(bg="#1e1e1e")
-
-tk.Label(folder_window, text="Select Remote Folder", font=("Segoe UI", 12, "bold"), fg="white", bg="#1e1e1e").pack(pady=10)
-
 # Upload File button
 upload_button = tk.Button(root, text="🚀 Upload File", command=upload_file, bg="green", fg="white", font=("Segoe UI", 11, "bold"), width=20)
 upload_button.grid(row=5, column=1, pady=25)
 
 root.mainloop()
-
